@@ -20,11 +20,11 @@ This record in turn needs to be processed and analysed so as to gain valuable in
 G2
 --------------------------------------------------------------------------
 
-## 2.3 Platform
+### 2.3 Platform
 
 It will be a (processed and maintained) portal accessed through our official website as well as desktop software.  
 
-## 2.4 Development Responsibility
+### 2.4 Development Responsibility
 
 We, the team of UsoC2020, would be developing the software and we are responsible for the creation of the Model, Database and all the other related stuffs.
 
