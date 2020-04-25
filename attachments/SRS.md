@@ -49,4 +49,3 @@ We, the team of UsoC2020, would be developing the software and we are responsibl
   
   ●	Feedback and customer care in case users feel any difficulty   
 
-
