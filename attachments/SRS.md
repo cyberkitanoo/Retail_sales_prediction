@@ -1,11 +1,10 @@
-# This is a template of Software Requirement Specification
+### 2.1 Customers:
 
-Retail_Sales_Prediction
-Customers:
-The shop owner or the people working for a retail organization will be able to use this application.
-It will benefit them in keeping a track of the sales, requirement and various reports regarding these.
+    * The shop owner or the people working for a retail organization will be able to use this application.
+    * It will benefit them in keeping a track of the sales, requirement and various reports regarding these.
 
-Functionality:
+### 2.2 Functionality:
+
 - It will help in keeping a record of available stock, sales and requirement.
 - The shop owner/ head at retail organization will be able to make their account under owner category.
 - The above respectively may add others working under them and grant them required access.
@@ -15,7 +14,6 @@ Functionality:
 - Various features like graphical representation, profit and loss etc. will also be added for better understanding.
 - An alarm notification will be sent if any loss is faced.
 - Using various regression models, predictions can be made about the sales in a particular season using previous records.
-
 
 Other features may be included with the progress of the project.
 
