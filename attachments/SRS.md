@@ -1,3 +1,12 @@
+DELIVERABLES
+
+I'll deliver the following during the course of development:
+
+Test plan
+Development document
+Feature specification
+
+
 RISK MANAGEMENT
 
 Risk Identification:
