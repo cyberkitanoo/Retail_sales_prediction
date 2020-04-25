@@ -18,8 +18,8 @@ This record in turn needs to be processed and analysed so as to gain valuable in
 
 ### 2.1 Customers:
 
-    * The shop owner or the people working for a retail organization will be able to use this application.
-    * It will benefit them in keeping a track of the sales, requirement and various reports regarding these.
+- The shop owner or the people working for a retail organization will be able to use this application.
+- It will benefit them in keeping a track of the sales, requirement and various reports regarding these.
 
 ### 2.2 Functionality:
 
