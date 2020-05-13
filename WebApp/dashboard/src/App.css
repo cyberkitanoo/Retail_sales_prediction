@@ -10,6 +10,7 @@ body{
 /* #endregion */
 
 /* Register */
+/* #region */
 body {font-family: Arial, Helvetica, sans-serif; background-image: url('retail.jpg'); }
 
 /* Full-width input fields */
@@ -169,8 +170,6 @@ span.psw {
      width: 100%;
   }
 }
-/* #region */
-
 
 /* #endregion */
 
