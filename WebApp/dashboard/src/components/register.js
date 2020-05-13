@@ -1,4 +1,5 @@
 import React from "react"
+import './App.css';
 
 class Register extends React.Component{
     render(){
@@ -8,10 +9,6 @@ class Register extends React.Component{
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<style>
-
-
-</style>
 </head>
 <body>
 
