@@ -1,75 +1,124 @@
 import React from "react";
-import './App.css';
+import '../App.css';
+import axios from "axios";
+import { withRouter } from "react-router-dom";
+import {API_BASE_URL} from '../constants/apiconstants';
+
 
 class Register extends React.Component{
+   
+    const [state , setState] = useState({
+        email : "",
+        password : "",
+        confirmPassword: "",
+        successMessage: null
+    })
+    const handleChange = (e) => {
+        const {id , value} = e.target   
+        setState(prevState => ({
+            ...prevState,
+            [id] : value
+        }))
+    }
+    const sendDetailsToServer = () => {
+        if(state.email.length && state.password.length) {
+            props.showError(null);
+            const payload={
+                "email":state.email,
+                "password":state.password,
+            }
+            axios.post(API_BASE_URL+'register', payload)
+                .then(function (response) {
+                    if(response.data.code === 200){
+                        setState(prevState => ({
+                            ...prevState,
+                            'successMessage' : 'Registration successful. Redirecting to home page..'
+                        }))
+                        redirectToHome();
+                        props.showError(null)
+                    } else{
+                        props.showError("Some error ocurred");
+                    }
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });    
+        } else {
+            props.showError('Please enter valid username and password')    
+        }
+        
+    }
+    const redirectToHome = () => {
+        props.updateTitle('Home')
+        props.history.push('/home');
+    }
+    const redirectToLogin = () => {
+        props.updateTitle('Login')
+        props.history.push('/login'); 
+    }
+    const handleSubmitClick = (e) => {
+        e.preventDefault();
+        if(state.password === state.confirmPassword) {
+            sendDetailsToServer()    
+        } else {
+            props.showError('Passwords do not match');
+        }
+    }
     render(){
         return(
-            <div>
-                <!DOCTYPE html>
-<html>
-<head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-</head>
-<body>
-
-<div class="image-container">
-<div class="text">
-<h1>Register Here</h1>
-</div></div>
-
-<div class="center1">
-<button onclick="document.getElementById('id01').style.display='block'" style="width:auto";>Register</button>
-</div>
-
-<div id="id01" class="modal">
-  
-  <form class="modal-content animate" action="/action_page.php" method="post">
-    <div class="imgcontainer">
-      <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
-      <img src="img_avatar2.png" alt="Avatar" class="avatar">
-    </div>
-
-    <div class="container">
-      <label for="fname"><b>First Name</b></label>
-      <input type="text" id="fname" name="firstname" placeholder="Enter your first name">
-
-      <label for="lname"><b>Last Name</b></label>
-      <input type="text" id="lname" name="lastname" placeholder="Enter your last name">
-
-      <label for="emailid"><b>Email id</b></label>
-      <input type="text" placeholder="Enter Email ID" name="emailid" required>
-
-      <label for="psw"><b>Password</b></label>
-      <input type="password" placeholder="Enter Password" name="psw" required>
-        
-      <button onclick="document.location = '----.html'" type="submit" style="padding:12px 20px;">Register</button>
-       </div>
-
-    <div class="container" style="background-color:#f1f1f1">
-      <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
-      
-    </div>
-  </form>
-</div>
-
-<script>
-// Get the modal
-var modal = document.getElementById('id01');
-
-// When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
-    if (event.target == modal) {
-        modal.style.display = "none";
-    }
-}
-</script>
-
-</body>
-</html>
-
+             <div className="card col-12 col-lg-4 login-card mt-2 hv-center">
+            <form>
+                <div className="form-group text-left">
+                <label htmlFor="exampleInputEmail1">Email address</label>
+                <input type="email" 
+                       className="form-control" 
+                       id="email" 
+                       aria-describedby="emailHelp" 
+                       placeholder="Enter email" 
+                       value={state.email}
+                       onChange={handleChange}
+                />
+                <small id="emailHelp" className="form-text text-muted">We'll never share your email with anyone else.</small>
+                </div>
+                <div className="form-group text-left">
+                    <label htmlFor="exampleInputPassword1">Password</label>
+                    <input type="password" 
+                        className="form-control" 
+                        id="password" 
+                        placeholder="Password"
+                        value={state.password}
+                        onChange={handleChange} 
+                    />
+                </div>
+                <div className="form-group text-left">
+                    <label htmlFor="exampleInputPassword1">Confirm Password</label>
+                    <input type="password" 
+                        className="form-control" 
+                        id="confirmPassword" 
+                        placeholder="Confirm Password"
+                        value={state.confirmPassword}
+                        onChange={handleChange} 
+                    />
+                </div>
+                <button 
+                    type="submit" 
+                    className="btn btn-primary"
+                    onClick={handleSubmitClick}
+                >
+                    Register
+                </button>
+            </form>
+            <div className="alert alert-success mt-2" style={{display: state.successMessage ? 'block' : 'none' }} role="alert">
+                {state.successMessage}
             </div>
-        )
-    }
+            <div className="mt-2">
+                <span>Already have an account? </span>
+                <span className="loginText" onClick={() => redirectToLogin()}>Login here</span> 
+            </div>
+            
+        </div>
+    )
 }
+
 
 export default Register
