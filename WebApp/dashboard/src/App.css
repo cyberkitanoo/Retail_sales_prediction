@@ -1,9 +1,9 @@
 .App {
   text-align: center;
-  background-color: rgba(7, 5, 17, 0.87);
   color: aliceblue;
   font-size: large;
   font-size: 100;
+  background-image: url(./img1.jpg);
 }
 
 .App-logo {
